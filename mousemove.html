@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+#div {width:90px; height:90px; position:absolute; background:rgba(250,250,250,0.5); border-radius:50%; margin-left:-20px; margin-top:-20px; border:1px solid #8d8d8d; cursor:noone; display:none;}
+body, html {min-width:100%; margin:0px; padding:0px; position:absolute; min-height:100%;}
+.cmn:active #div { width:30px; height:30px; margin-top:-5px; margin-left:-5px;}
+.cmn {width:200px; border:1px solid #ccc; cursor:none; position:relative;}
+.zoom {width:500px; height:500px; overflow:hidden; display:none; position:absolute; left:220px; top:0px; border:1px solid #ccc;}
+.cmn:hover .zoom {display:block;}
+</style>
+<script>
+$(document).ready(function() {    
+$('.cmn').mouseleave(function(){$('#div').css('display', 'none');});
+$('.cmn').bind('mousemove', function(e){
+$('#div').css({
+	'display': 'block',
+	'left': e.pageX,
+ 	'top':  e.pageY
+	});		
+	$('#zoom_img').css({
+	'left': -e.pageX * 8 + 20,
+ 	'top':  -e.pageY * 8 + 20
+	});	
+	
+});
+
+});
+</script>
+
+</head>
+
+<body>
+<div class="cmn"> 
+<img src="index_1.jpg" alt="" title="" style="width:100%" />
+<div id="div"> </div>
+<div class="zoom"> 
+<img src="index_1.jpg" id="zoom_img" alt="" title="" style="position:absolute; top:0px; left:0px;" />
+</div>
+</div>
+
+</body>
+</html>
